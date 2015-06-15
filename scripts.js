@@ -18,6 +18,11 @@ $(function(){
 			height: wHeight,
 			width: wWidth,
 			videoId: 'THbBF4WdYCs',
+			playerVars: {
+				controls: 1,
+				showinfo: 0,
+				rel: 0
+			},
 			events: {
 				'onReady': onPlayerReady,
 				'onStateChange': onPlayerStateChange
