@@ -1,0 +1,10 @@
+header {
+	width: 100%;
+	background: black;
+	padding: 8px;
+	height: 66px;
+}
+
+body {
+	overflow: hidden;
+}
