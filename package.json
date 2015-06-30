@@ -1,0 +1,18 @@
+{
+  "name": "Domi",
+  "version": "0.0.1",
+  "description": "Band site for Domi",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Quball",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^2.2.0",
+    "grunt-browser-sync": "^2.0.0",
+    "grunt-sass": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^3.1.0"
+  }
+}

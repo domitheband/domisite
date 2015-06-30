@@ -1,0 +1,56 @@
+body {
+  overflow: hidden;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: lighter;
+  letter-spacing: 0.05em;
+  background: #000; }
+
+header {
+  width: 100%;
+  background: #303030; }
+
+/*
+UPPER LEFT ALBUM RELEASE
+*/
+.albumWrap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  background: rgba(222, 237, 222, 0.5);
+  transform-origin: bottom left;
+  transition: transform 400ms ease-in; }
+  .albumWrap .cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url("../../assets/images/oldPaper.jpg") no-repeat;
+    background-size: cover; }
+  .albumWrap .promo {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+    font-size: 42px;
+    text-align: center;
+    transition: transform 400ms ease-in; }
+  .albumWrap.in {
+    transform: rotate(0deg); }
+    .albumWrap.in .promo {
+      transform: translate(-100%, -200%); }
+
+/*
+LOWER  RIGHT VIDEO
+*/
+.youtube {
+  position: absolute;
+  top: 0;
+  left: calc(100vh / 4);
+  z-index: 10;
+  transform-origin: top right; }
+  .youtube.in {
+    z-index: 30;
+    transform: rotate(0deg); }
+
+/*# sourceMappingURL=dev.css.map */
