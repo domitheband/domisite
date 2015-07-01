@@ -1,14 +1,34 @@
 body {
   overflow: hidden;
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: lighter;
   letter-spacing: 0.05em;
   background: #000; }
 
 header {
   width: 100%;
-  background: #303030; }
+  height: 100vh;
+  background: black;
+  color: white;
+  position: relative; }
+  header nav {
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    right: 16px;
+    line-height: 40px;
+    transform: translateY(-50%); }
+  header a, header a:visited {
+    color: #ececec; }
+    header a:hover, header a:active, header a:visited:hover, header a:visited:active {
+      color: darksalmon; }
+  header h1 {
+    font-size: 48px;
+    text-transform: uppercase; }
+  header h2 {
+    font-size: 32px; }
 
 /*
 UPPER LEFT ALBUM RELEASE
@@ -18,39 +38,49 @@ UPPER LEFT ALBUM RELEASE
   left: 0;
   bottom: 0;
   z-index: 20;
-  background: rgba(222, 237, 222, 0.5);
+  opacity: .5;
   transform-origin: bottom left;
-  transition: transform 400ms ease-in; }
-  .albumWrap .cover {
+  transition: transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  cursor: pointer; }
+  .albumWrap .background {
     position: relative;
     width: 100%;
     height: 100%;
     background: url("../../assets/images/oldPaper.jpg") no-repeat;
     background-size: cover; }
-  .albumWrap .promo {
+  .albumWrap .album {
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -200%);
-    font-size: 42px;
-    text-align: center;
-    transition: transform 400ms ease-in; }
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../assets/images/risk_of_fire_apple_1400x1400.jpg") no-repeat center center;
+    background-size: contain; }
+  .albumWrap:hover {
+    opacity: .9; }
   .albumWrap.in {
-    transform: rotate(0deg); }
-    .albumWrap.in .promo {
-      transform: translate(-100%, -200%); }
+    transform: rotate(0deg);
+    opacity: 1; }
 
 /*
 LOWER  RIGHT VIDEO
 */
 .youtube {
   position: absolute;
-  top: 0;
-  left: calc(100vh / 4);
+  top: 100%;
+  right: 0;
   z-index: 10;
-  transform-origin: top right; }
+  transform-origin: top right;
+  opacity: .5;
+  transition: transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  cursor: pointer; }
+  .youtube:hover {
+    opacity: .9;
+    z-index: 30; }
   .youtube.in {
     z-index: 30;
-    transform: rotate(0deg); }
+    transform: rotate(0deg);
+    top: 0;
+    opacity: 1; }
 
 /*# sourceMappingURL=dev.css.map */

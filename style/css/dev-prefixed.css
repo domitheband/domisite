@@ -1,14 +1,36 @@
 body {
   overflow: hidden;
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: lighter;
   letter-spacing: 0.05em;
   background: #000; }
 
 header {
   width: 100%;
-  background: #303030; }
+  height: 100vh;
+  background: black;
+  color: white;
+  position: relative; }
+  header nav {
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    right: 16px;
+    line-height: 40px;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  header a, header a:visited {
+    color: #ececec; }
+    header a:hover, header a:active, header a:visited:hover, header a:visited:active {
+      color: darksalmon; }
+  header h1 {
+    font-size: 48px;
+    text-transform: uppercase; }
+  header h2 {
+    font-size: 32px; }
 
 /*
 UPPER LEFT ALBUM RELEASE
@@ -18,52 +40,58 @@ UPPER LEFT ALBUM RELEASE
   left: 0;
   bottom: 0;
   z-index: 20;
-  background: rgba(222, 237, 222, 0.5);
+  opacity: .5;
   -webkit-transform-origin: bottom left;
       -ms-transform-origin: bottom left;
           transform-origin: bottom left;
-  -webkit-transition: -webkit-transform 400ms ease-in;
-          transition: transform 400ms ease-in; }
-  .albumWrap .cover {
+  -webkit-transition: -webkit-transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition: transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  cursor: pointer; }
+  .albumWrap .background {
     position: relative;
     width: 100%;
     height: 100%;
     background: url("../../assets/images/oldPaper.jpg") no-repeat;
     background-size: cover; }
-  .albumWrap .promo {
+  .albumWrap .album {
     position: absolute;
-    top: 100%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -200%);
-        -ms-transform: translate(-50%, -200%);
-            transform: translate(-50%, -200%);
-    font-size: 42px;
-    text-align: center;
-    -webkit-transition: -webkit-transform 400ms ease-in;
-            transition: transform 400ms ease-in; }
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../assets/images/risk_of_fire_apple_1400x1400.jpg") no-repeat center center;
+    background-size: contain; }
+  .albumWrap:hover {
+    opacity: .9; }
   .albumWrap.in {
     -webkit-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
-            transform: rotate(0deg); }
-    .albumWrap.in .promo {
-      -webkit-transform: translate(-100%, -200%);
-          -ms-transform: translate(-100%, -200%);
-              transform: translate(-100%, -200%); }
+            transform: rotate(0deg);
+    opacity: 1; }
 
 /*
 LOWER  RIGHT VIDEO
 */
 .youtube {
   position: absolute;
-  top: 0;
-  left: calc(100vh / 4);
+  top: 100%;
+  right: 0;
   z-index: 10;
   -webkit-transform-origin: top right;
       -ms-transform-origin: top right;
-          transform-origin: top right; }
+          transform-origin: top right;
+  opacity: .5;
+  -webkit-transition: -webkit-transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition: transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  cursor: pointer; }
+  .youtube:hover {
+    opacity: .9;
+    z-index: 30; }
   .youtube.in {
     z-index: 30;
     -webkit-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
-            transform: rotate(0deg); }
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Njc3MvZGV2LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDQyxpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLHdCQUF3QjtFQUN4QixxQkFBcUI7RUFDckIsdUJBQXVCO0VBQ3ZCLGlCQUFpQixFQU5aOztBQVNOO0VBQ0MsWUFBWTtFQUNaLG9CQUFvQixFQUZiOztBQUtSOztFQUVFO0FBRUY7RUFDQyxtQkFBbUI7RUFDbkIsUUFBUTtFQUNSLFVBQVU7RUFDVixZQUFZO0VBQ1oscUNBQWdCO0VBQ2hCLHNDQUE4QjtNQUE5QixrQ0FBOEI7VUFBOUIsOEJBQThCO0VBQzlCLG9EQUFtQztVQUFuQyxvQ0FBbUMsRUFQeEI7RUFTWDtJQUNDLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osYUFBYTtJQUNiLDhEQUE2RDtJQUM3RCx1QkFBdUIsRUFMaEI7RUFRUjtJQUNDLG1CQUFtQjtJQUNuQixVQUFVO0lBQ1YsVUFBVTtJQUNWLDBDQUFvQjtRQUFwQixzQ0FBb0I7WUFBcEIsa0NBQW9CO0lBQ3BCLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsb0RBQW1DO1lBQW5DLG9DQUFtQyxFQVA1QjtFQVVQO0lBQ0EsZ0NBQWlCO1FBQWpCLDRCQUFpQjtZQUFqQix3QkFBaUIsRUFEWjtJQUdMO01BQ0MsMkNBQW9CO1VBQXBCLHVDQUFvQjtjQUFwQixtQ0FBb0IsRUFEYjs7QUFNVjs7RUFFRTtBQUVGO0VBQ0MsbUJBQW1CO0VBQ25CLE9BQU87RUFDUCxzQkFBVTtFQUNWLFlBQVk7RUFDWixvQ0FBNEI7TUFBNUIsZ0NBQTRCO1VBQTVCLDRCQUE0QixFQUxuQjtFQU9SO0lBQ0EsWUFBWTtJQUNaLGdDQUFpQjtRQUFqQiw0QkFBaUI7WUFBakIsd0JBQWlCLEVBRloiLCJmaWxlIjoiZGV2LXByZWZpeGVkLmNzcyIsInNvdXJjZXNDb250ZW50IjpbbnVsbF19 */
+            transform: rotate(0deg);
+    top: 0;
+    opacity: 1; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Njc3MvZGV2LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDQyxpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLDJDQUEyQztFQUMzQyxxQkFBcUI7RUFDckIsdUJBQXVCO0VBQ3ZCLGlCQUFpQixFQU5aOztBQVNOO0VBQ0MsWUFBWTtFQUNaLGNBQWM7RUFDZCxrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLG1CQUFtQixFQUxaO0VBT1A7SUFDQyxrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLFNBQVM7SUFDVCxZQUFZO0lBQ1osWUFBZ0I7SUFDaEIsa0JBQXNCO0lBQ3RCLG9DQUFxQjtRQUFyQixnQ0FBcUI7WUFBckIsNEJBQXFCLEVBUGpCO0VBVUQ7SUFDSCxlQUFlLEVBREY7SUFHSDtNQUNULGtCQUFrQixFQURBO0VBS3BCO0lBQ0MsZ0JBQW9CO0lBQ3BCLDBCQUEwQixFQUZ2QjtFQUtKO0lBQ0MsZ0JBQW9CLEVBRGpCOztBQUtMOztFQUVFO0FBRUY7RUFDQyxtQkFBbUI7RUFDbkIsUUFBUTtFQUNSLFVBQVU7RUFDVixZQUFZO0VBQ1osWUFBWTtFQUNaLHNDQUE4QjtNQUE5QixrQ0FBOEI7VUFBOUIsOEJBQThCO0VBQzlCLGdGQUF3QztVQUF4QyxnRUFBd0M7RUFDeEMsZ0JBQWdCLEVBUkw7RUFVWDtJQUNDLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osYUFBYTtJQUNiLDhEQUE2RDtJQUM3RCx1QkFBdUIsRUFMWDtFQVFiO0lBQ0MsbUJBQW1CO0lBQ25CLFFBQVE7SUFDUixPQUFPO0lBQ1AsWUFBWTtJQUNaLGFBQWE7SUFDYixnR0FBK0Y7SUFDL0YseUJBQXlCLEVBUGxCO0VBVVA7SUFDQSxZQUFZLEVBREo7RUFJUjtJQUNBLGdDQUFpQjtRQUFqQiw0QkFBaUI7WUFBakIsd0JBQWlCO0lBQ2pCLFdBQVcsRUFGTjs7QUFNUDs7RUFFRTtBQUVGO0VBQ0MsbUJBQW1CO0VBQ25CLFVBQVU7RUFDVixTQUFTO0VBQ1QsWUFBWTtFQUNaLG9DQUE0QjtNQUE1QixnQ0FBNEI7VUFBNUIsNEJBQTRCO0VBQzVCLFlBQVk7RUFDWixnRkFBd0M7VUFBeEMsZ0VBQXdDO0VBQ3hDLGdCQUFnQixFQVJQO0VBVVI7SUFDQSxZQUFZO0lBQ1osWUFBWSxFQUZKO0VBS1I7SUFDQSxZQUFZO0lBQ1osZ0NBQWlCO1FBQWpCLDRCQUFpQjtZQUFqQix3QkFBaUI7SUFDakIsT0FBTztJQUNQLFdBQVcsRUFKTiIsImZpbGUiOiJkZXYtcHJlZml4ZWQuY3NzIiwic291cmNlc0NvbnRlbnQiOltudWxsXX0= */

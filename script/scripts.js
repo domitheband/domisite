@@ -12,7 +12,7 @@ $(function(){
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 	// Params
-	var volume = 0;
+	var volume = 100;
 
 	// Replace the 'ytplayer' element with an <iframe> and
 	// YouTube player after the API code downloads.
@@ -93,17 +93,20 @@ function initStyles(w, h) {
 		'transform': 'rotate(-' + rotateAngle + 'deg)'
 	};
 
+	var videoRotate = {
+		'transform': 'rotate(' + rotateAngle + 'deg)'
+	};
+
 	if(!$albumPromo.hasClass('in')) {
 		$albumPromo.css(rotateStyle);
 	}
 
 	if(!$video.hasClass('in')) {
-		$video.css(rotateStyle);
+		$video.css(videoRotate);
 	}
 
 	$albumPromo.css(sizeStyles);
 	$video.css(sizeStyles);
-	$video.css('left', -(h/4)+'px');
 }
 
 // Position video
@@ -114,8 +117,7 @@ function videoInfocus(w, h) {
 
 	var videoFit = {
 		'width': w + 'px',
-		'height': h + 'px',
-		'left': 0
+		'height': h + 'px'
 	};
 
 	//$albumPromo.hide();
@@ -133,7 +135,6 @@ function albumInFocus(w, h) {
 	$albumPromo.on('click', function() {
 		$albumPromo.get(0).style.removeProperty('transform');
 		if($albumPromo.hasClass('in')) {
-
 			var wWidth = $(window).innerWidth(),
 			wHeight = $(window).innerHeight();
 			$albumPromo.removeClass('in');
@@ -142,5 +143,15 @@ function albumInFocus(w, h) {
 		} else {
 			$albumPromo.addClass('in');
 		}
+
+		$albumPromo.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
+			function(e) {
+				if($albumPromo.hasClass('in')) {
+					console.log('Album now in focus');
+				} else {
+					console.log('Album now out of focus');
+				}
+			});
+
 	});
 }
