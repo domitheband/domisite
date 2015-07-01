@@ -36,7 +36,10 @@ header {
 
 	h1 {
 		font-size: $baseUnit * 6;
+		line-height: $baseUnit * 8;
 		text-transform: uppercase;
+		font-weight: 600;
+		font-style: italic;
 	}
 
 	h2 {
