@@ -1,7 +1,25 @@
+var prefix = (function () {
+	var styles = window.getComputedStyle(document.documentElement, ''),
+		pre = (Array.prototype.slice
+			.call(styles)
+			.join('')
+			.match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
+		)[1],
+		dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+	return {
+		dom: dom,
+		lowercase: pre,
+		css: '-' + pre + '-',
+		js: pre[0].toUpperCase() + pre.substr(1)
+	};
+})();
+
+console.log(prefix.css);
+
 $(function(){
 
 	var wWidth = $(window).innerWidth();
-	var wHeight = $(window).innerHeight()
+	var wHeight = $(window).innerHeight();
 
 	albumInFocus(wWidth, wHeight);
 
@@ -89,20 +107,22 @@ function initStyles(w, h) {
 		'height': h+'px'
 	};
 
-	var rotateStyle = {
-		'transform': 'rotate(-' + rotateAngle + 'deg)'
-	};
+	var transformName = prefix.css + 'transform';
 
-	var videoRotate = {
-		'transform': 'rotate(' + rotateAngle + 'deg)'
-	};
+	//var rotateStyle = {
+	//	transformName: 'rotate(-' + rotateAngle + 'deg)'
+	//};
+	//
+	//var videoRotate = {
+	//	transformName: 'rotate(' + rotateAngle + 'deg)'
+	//};
 
 	if(!$albumPromo.hasClass('in')) {
-		$albumPromo.css(rotateStyle);
+		$albumPromo.css(transformName, 'rotate(-' + rotateAngle + 'deg)');
 	}
 
 	if(!$video.hasClass('in')) {
-		$video.css(videoRotate);
+		$video.css(transformName, 'rotate(' + rotateAngle + 'deg)');
 	}
 
 	$albumPromo.css(sizeStyles);
@@ -121,7 +141,7 @@ function videoInfocus(w, h) {
 	};
 
 	//$albumPromo.hide();
-	$video.get(0).style.removeProperty('transform');
+	$video.get(0).style.removeProperty(prefix.css + 'transform');
 	$video.addClass('in');
 	$video.css(videoFit);
 }
@@ -133,7 +153,7 @@ function albumInFocus(w, h) {
 	var $albumPromo = $('.albumWrap');
 
 	$albumPromo.on('click', function() {
-		$albumPromo.get(0).style.removeProperty('transform');
+		$albumPromo.get(0).style.removeProperty(prefix.css + 'transform');
 		if($albumPromo.hasClass('in')) {
 			var wWidth = $(window).innerWidth(),
 			wHeight = $(window).innerHeight();
